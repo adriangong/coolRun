@@ -9,6 +9,14 @@
 #import "AGXMPPTool.h"
 #import "AGUserInfo.h"
 @interface AGXMPPTool() <XMPPStreamDelegate>
+{
+    //为了保持住属性，创建变量
+    AGResultBlock _resultblock;
+    //_resultblock可以被赋值
+    //_resultblock = ^(AGXMPPResultType type) {
+    //
+    //};
+}
 
 @end
 
@@ -59,6 +67,14 @@ singleton_implementation(AGXMPPTool)
     [self.xmppStream sendElement:presence];
 }
 
+-(void)userLogin:(AGResultBlock)block{
+    _resultblock = block;
+    /** 无论之前有没有登录 都断开一次 */
+    [self.xmppStream disconnect];
+    /** 调用连接 */
+    [self connectHost];
+}
+
 //////////////////////////////////////////////////////////////////////////
 #pragma mark XMPPStreamDelegate
 //////////////////////////////////////////////////////////////////////////
@@ -71,13 +87,16 @@ singleton_implementation(AGXMPPTool)
 
 /** 连接服务器失败 */
 - (void)xmppStreamDidDisconnect:(XMPPStream *)sender withError:(NSError *)error{
-    if (error) {
+    if (error && _resultblock) {
+        _resultblock(AGXMPPResultTypeNetError);
+        //void(^_resultblock)(AGXMPPResultType type)
         NSLog(@"%@",error);
     }
 }
 
 /** 授权成功 */
 - (void)xmppStreamDidAuthenticate:(XMPPStream *)sender{
+    _resultblock(AGXMPPResultTypeLoginSuccess);
     /** 发送在线消息 */
     [self sendOnLine];
 }
@@ -85,14 +104,12 @@ singleton_implementation(AGXMPPTool)
 /** 授权失败 */
 - (void)xmppStream:(XMPPStream *)sender didNotAuthenticate:(DDXMLElement *)error{
     NSLog(@"%@",error);
+    if (error && _resultblock) {
+        _resultblock(AGXMPPResultTypeLoginFaild);
+    }
 }
 
--(void)userLogin{
-    /** 无论之前有没有登录 都断开一次 */
-    [self.xmppStream disconnect];
-    /** 调用连接 */
-    [self connectHost];
-}
+
 
 @end
 

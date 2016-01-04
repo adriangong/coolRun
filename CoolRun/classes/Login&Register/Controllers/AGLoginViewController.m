@@ -23,7 +23,42 @@
     userInfo.userName = self.nameTextField.text;
     userInfo.userPasswd = self.pwdTextField.text;
     /** 点击登录按钮 调用工具类的登录方法 */
-    [[AGXMPPTool sharedAGXMPPTool] userLogin];
+    //下面这句是为了调用self方法 并且 防止内存泄露
+    __weak typeof (self) vc = self;
+    //通过设置断点调试，发现会先执行userLogin里面的内容，然后再执行block括号里面的内容
+    [[AGXMPPTool sharedAGXMPPTool] userLogin:^(AGXMPPResultType type) {
+        //外面要拿里面的状态
+        //什么状态做什么事
+        //在block里面用self有风险，会出现“循环引用”问题，这是一个非常严重的问题，内存泄露。
+        //[self handleLoginResultType:type];
+        [vc handleLoginResultType:type];
+    }];
+    //[AGXMPPTool sharedAGXMPPTool] userLogin:<#^(AGXMPPResultType type)block#>
+}
+
+/** 处理登录的返回状态 */
+- (void)handleLoginResultType:(AGXMPPResultType) type{
+    switch (type) {
+        case AGXMPPResultTypeLoginSuccess:{
+            NSLog(@"登录成功");
+            //切换到主界面
+            UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                //第二个参数，传nil就代表mainBundle
+            [UIApplication sharedApplication].keyWindow.rootViewController = storyboard.instantiateInitialViewController;
+            //跳转界面以后要销毁登录界面
+        }
+            break;
+        case AGXMPPResultTypeLoginFaild:{
+            NSLog(@"登录失败");
+        }
+            break;
+        case AGXMPPResultTypeNetError:{
+            NSLog(@"网络错误");
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 - (void)viewDidLoad {
@@ -54,14 +89,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/** 证明这个控制器释放了 */
+- (void)dealloc{
+    NSLog(@"%@ 销毁了",self);
 }
-*/
 
 @end
