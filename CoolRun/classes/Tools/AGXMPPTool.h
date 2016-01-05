@@ -13,8 +13,11 @@
 typedef enum{
     AGXMPPResultTypeLoginSuccess = 0,
     AGXMPPResultTypeLoginFaild,
-    AGXMPPResultTypeNetError
+    AGXMPPResultTypeNetError,
+    AGXMPPResultTypeRegistSuccess,
+    AGXMPPResultTypeRegistFaild,
 }AGXMPPResultType;
+/** 定义枚举 代表注册状态*/
 
 /** 定义BLOCK */
 typedef void(^AGResultBlock)(AGXMPPResultType type);
@@ -42,5 +45,7 @@ singleton_interface(AGXMPPTool)
 - (void)sendOnLine;
 
 - (void)userLogin:(AGResultBlock)block;
+/** 用户注册调用的方法 */
+- (void)userRegist:(AGResultBlock)block;
 
 @end

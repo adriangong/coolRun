@@ -17,5 +17,9 @@
 #define AGXMPPDOMAIN @"tarena.com"
 #define AGXMPPHOSTNAME @"127.0.0.1"
 #define AGXMPPPORT 5222
-
+    #ifdef DEBUG
+        #define MYLog(...) NSLog(__VA_ARGS__)
+    #else
+        #define MYLog(...)  //替换成空白
+    #endif
 #endif /* PrefixHeader_pch */

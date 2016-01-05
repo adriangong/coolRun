@@ -18,7 +18,8 @@
 
 @implementation AGLoginViewController
 - (IBAction)clickLogin:(id)sender {
-    NSLog(@"click login");
+    MYLog(@"click login");
+    [AGUserInfo sharedAGUserInfo].registType = NO;
     AGUserInfo *userInfo = [AGUserInfo sharedAGUserInfo];
     userInfo.userName = self.nameTextField.text;
     userInfo.userPasswd = self.pwdTextField.text;
@@ -40,7 +41,7 @@
 - (void)handleLoginResultType:(AGXMPPResultType) type{
     switch (type) {
         case AGXMPPResultTypeLoginSuccess:{
-            NSLog(@"登录成功");
+            MYLog(@"登录成功");
             //切换到主界面
             UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                 //第二个参数，传nil就代表mainBundle
@@ -49,11 +50,11 @@
         }
             break;
         case AGXMPPResultTypeLoginFaild:{
-            NSLog(@"登录失败");
+            MYLog(@"登录失败");
         }
             break;
         case AGXMPPResultTypeNetError:{
-            NSLog(@"网络错误");
+            MYLog(@"网络错误");
         }
             break;
         default:
@@ -91,7 +92,7 @@
 
 /** 证明这个控制器释放了 */
 - (void)dealloc{
-    NSLog(@"%@ 销毁了",self);
+    MYLog(@"%@ 销毁了",self);
 }
 
 @end
