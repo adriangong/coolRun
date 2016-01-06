@@ -10,4 +10,9 @@
 
 @implementation AGUserInfo
 singleton_implementation(AGUserInfo)
+
+- (NSString *)jidStr{
+    return [NSString stringWithFormat:@"%@@%@",self.userName,AGXMPPDOMAIN];
+}
+
 @end

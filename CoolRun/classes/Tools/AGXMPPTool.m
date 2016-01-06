@@ -8,6 +8,11 @@
 
 #import "AGXMPPTool.h"
 #import "AGUserInfo.h"
+
+#import "DDLog.h"
+#import "DDTTYLogger.h"
+
+
 @interface AGXMPPTool() <XMPPStreamDelegate>
 {
     //为了保持住属性，创建变量
@@ -27,9 +32,31 @@ singleton_implementation(AGXMPPTool)
 /** 设置XMPP流 */
 - (void)setXmpp{
     if (self.xmppStream) return;
+    
     self.xmppStream = [[XMPPStream alloc] init];
+    
     /** 设置代理 */
     [self.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
+    
+    //开启底层发送数据的日志 xml文件
+    //[DDLog addLogger:[DDTTYLogger sharedInstance]];
+    
+    /** 给 电子名片模块 和 头像模块 赋值 */
+    self.xmppvCardCoreDataStorage = [XMPPvCardCoreDataStorage sharedInstance];
+    self.xmppvCard = [[XMPPvCardTempModule alloc] initWithvCardStorage:self.xmppvCardCoreDataStorage];
+    self.xmppvCardAvarta = [[XMPPvCardAvatarModule alloc] initWithvCardTempModule:self.xmppvCard];
+    
+    /** 激活名片 */
+    [self.xmppvCard activate:self.xmppStream];
+    [self.xmppvCardAvarta activate:self.xmppStream];
+    
+    /** 给 好友列表模块对象 和 存储对象 赋值 */
+    self.xmppRosterStore = [XMPPRosterCoreDataStorage sharedInstance];
+    self.xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:self.xmppRosterStore];
+    
+    /** 激活好友列表 */
+    [self.xmppRoster activate:self.xmppStream];
+    
 }
 
 /** 连接到服务器 */

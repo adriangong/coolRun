@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		060817DA1C3CA63F00CA34B0 /* AGEditMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 060817D91C3CA63F00CA34B0 /* AGEditMyProfileViewController.m */; };
+		060817DD1C3CCDAE00CA34B0 /* AGSmallTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 060817DC1C3CCDAE00CA34B0 /* AGSmallTools.m */; };
 		06502F101C34D3A000819E34 /* AGUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 06502F0F1C34D3A000819E34 /* AGUserInfo.m */; };
 		06502F131C34DC4200819E34 /* AGXMPPTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 06502F121C34DC4200819E34 /* AGXMPPTool.m */; };
 		065030631C34DCFF00819E34 /* XMPPAnonymousAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 06502F181C34DCFE00819E34 /* XMPPAnonymousAuthentication.m */; };
@@ -150,6 +152,7 @@
 		067F33F21C3A43A8003E0DF9 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 067F33E91C3A43A8003E0DF9 /* AFURLSessionManager.m */; };
 		067F33F41C3A49ED003E0DF9 /* sun.png in Resources */ = {isa = PBXBuildFile; fileRef = 067F33F31C3A49ED003E0DF9 /* sun.png */; };
 		067F33F71C3A5A54003E0DF9 /* NSString+md5.m in Sources */ = {isa = PBXBuildFile; fileRef = 067F33F61C3A5A54003E0DF9 /* NSString+md5.m */; };
+		069826E81C3BBB1B005DB27E /* AGMyProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 069826E71C3BBB1B005DB27E /* AGMyProfileViewController.m */; };
 		06BD5D511C34BA8400BA514D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD5D501C34BA8400BA514D /* main.m */; };
 		06BD5D541C34BA8400BA514D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD5D531C34BA8400BA514D /* AppDelegate.m */; };
 		06BD5D571C34BA8400BA514D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD5D561C34BA8400BA514D /* ViewController.m */; };
@@ -158,10 +161,21 @@
 		06BD5D5F1C34BA8400BA514D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BD5D5D1C34BA8400BA514D /* LaunchScreen.storyboard */; };
 		06BD5D711C34BCFB00BA514D /* LoginAndRegister.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 06BD5D701C34BCFB00BA514D /* LoginAndRegister.storyboard */; };
 		06BD5D741C34C66200BA514D /* AGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06BD5D731C34C66200BA514D /* AGLoginViewController.m */; };
+		06CE2BF31C3B50A500B46A7A /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CE2BF21C3B50A500B46A7A /* MBProgressHUD.m */; };
+		06CE2BF61C3B553800B46A7A /* MBProgressHUD+AG.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CE2BF51C3B553800B46A7A /* MBProgressHUD+AG.m */; };
+		06CE2BF81C3B56FE00B46A7A /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 06CE2BF71C3B56FE00B46A7A /* MBProgressHUD.bundle */; };
+		06CE2BFC1C3B5C8500B46A7A /* AGSinaLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CE2BFB1C3B5C8500B46A7A /* AGSinaLoginViewController.m */; };
+		06CE2BFF1C3B67CB00B46A7A /* AGWechatLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06CE2BFE1C3B67CB00B46A7A /* AGWechatLoginViewController.m */; };
+		06D9A0E11C3CF3CD00624A70 /* AGRosterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D9A0E01C3CF3CD00624A70 /* AGRosterCell.m */; };
+		06D9A1151C3D091400624A70 /* AGRosterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D9A1141C3D091400624A70 /* AGRosterTableViewController.m */; };
 		06EBC8C01C3A0BC5009A31D8 /* AGRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06EBC8BF1C3A0BC5009A31D8 /* AGRegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		060817D81C3CA63F00CA34B0 /* AGEditMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGEditMyProfileViewController.h; sourceTree = "<group>"; };
+		060817D91C3CA63F00CA34B0 /* AGEditMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGEditMyProfileViewController.m; sourceTree = "<group>"; };
+		060817DB1C3CCDAE00CA34B0 /* AGSmallTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSmallTools.h; sourceTree = "<group>"; };
+		060817DC1C3CCDAE00CA34B0 /* AGSmallTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSmallTools.m; sourceTree = "<group>"; };
 		06502F0D1C34D2EA00819E34 /* Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
 		06502F0E1C34D3A000819E34 /* AGUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGUserInfo.h; sourceTree = "<group>"; };
 		06502F0F1C34D3A000819E34 /* AGUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGUserInfo.m; sourceTree = "<group>"; };
@@ -457,12 +471,14 @@
 		067F33F31C3A49ED003E0DF9 /* sun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sun.png; path = classes/Categories/sun.png; sourceTree = "<group>"; };
 		067F33F51C3A5A54003E0DF9 /* NSString+md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+md5.h"; sourceTree = "<group>"; };
 		067F33F61C3A5A54003E0DF9 /* NSString+md5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+md5.m"; sourceTree = "<group>"; };
+		069826E61C3BBB1B005DB27E /* AGMyProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGMyProfileViewController.h; sourceTree = "<group>"; };
+		069826E71C3BBB1B005DB27E /* AGMyProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGMyProfileViewController.m; sourceTree = "<group>"; };
 		06BD5D4C1C34BA8400BA514D /* CoolRun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoolRun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		06BD5D501C34BA8400BA514D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		06BD5D521C34BA8400BA514D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ../../AppDelegate.h; sourceTree = "<group>"; };
 		06BD5D531C34BA8400BA514D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ../../AppDelegate.m; sourceTree = "<group>"; };
-		06BD5D551C34BA8400BA514D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		06BD5D561C34BA8400BA514D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		06BD5D551C34BA8400BA514D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = ../../ViewController.h; sourceTree = "<group>"; };
+		06BD5D561C34BA8400BA514D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = ../../ViewController.m; sourceTree = "<group>"; };
 		06BD5D591C34BA8400BA514D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		06BD5D5B1C34BA8400BA514D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		06BD5D5E1C34BA8400BA514D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -470,6 +486,19 @@
 		06BD5D701C34BCFB00BA514D /* LoginAndRegister.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LoginAndRegister.storyboard; sourceTree = "<group>"; };
 		06BD5D721C34C66200BA514D /* AGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGLoginViewController.h; sourceTree = "<group>"; };
 		06BD5D731C34C66200BA514D /* AGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGLoginViewController.m; sourceTree = "<group>"; };
+		06CE2BF11C3B50A500B46A7A /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		06CE2BF21C3B50A500B46A7A /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		06CE2BF41C3B553800B46A7A /* MBProgressHUD+AG.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+AG.h"; sourceTree = "<group>"; };
+		06CE2BF51C3B553800B46A7A /* MBProgressHUD+AG.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+AG.m"; sourceTree = "<group>"; };
+		06CE2BF71C3B56FE00B46A7A /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		06CE2BFA1C3B5C8500B46A7A /* AGSinaLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGSinaLoginViewController.h; sourceTree = "<group>"; };
+		06CE2BFB1C3B5C8500B46A7A /* AGSinaLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGSinaLoginViewController.m; sourceTree = "<group>"; };
+		06CE2BFD1C3B67CB00B46A7A /* AGWechatLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGWechatLoginViewController.h; sourceTree = "<group>"; };
+		06CE2BFE1C3B67CB00B46A7A /* AGWechatLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGWechatLoginViewController.m; sourceTree = "<group>"; };
+		06D9A0DF1C3CF3CD00624A70 /* AGRosterCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRosterCell.h; sourceTree = "<group>"; };
+		06D9A0E01C3CF3CD00624A70 /* AGRosterCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRosterCell.m; sourceTree = "<group>"; };
+		06D9A1131C3D091400624A70 /* AGRosterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRosterTableViewController.h; sourceTree = "<group>"; };
+		06D9A1141C3D091400624A70 /* AGRosterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRosterTableViewController.m; sourceTree = "<group>"; };
 		06EBC8BE1C3A0BC5009A31D8 /* AGRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGRegisterViewController.h; sourceTree = "<group>"; };
 		06EBC8BF1C3A0BC5009A31D8 /* AGRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGRegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1306,6 +1335,22 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		069826E51C3BBACE005DB27E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				06BD5D551C34BA8400BA514D /* ViewController.h */,
+				06BD5D561C34BA8400BA514D /* ViewController.m */,
+				069826E61C3BBB1B005DB27E /* AGMyProfileViewController.h */,
+				069826E71C3BBB1B005DB27E /* AGMyProfileViewController.m */,
+				060817D81C3CA63F00CA34B0 /* AGEditMyProfileViewController.h */,
+				060817D91C3CA63F00CA34B0 /* AGEditMyProfileViewController.m */,
+				06D9A1131C3D091400624A70 /* AGRosterTableViewController.h */,
+				06D9A1141C3D091400624A70 /* AGRosterTableViewController.m */,
+			);
+			name = Controllers;
+			path = ../Controllers;
+			sourceTree = "<group>";
+		};
 		06BD5D431C34BA8400BA514D = {
 			isa = PBXGroup;
 			children = (
@@ -1328,8 +1373,6 @@
 			isa = PBXGroup;
 			children = (
 				06BD5D661C34BBE200BA514D /* classes */,
-				06BD5D551C34BA8400BA514D /* ViewController.h */,
-				06BD5D561C34BA8400BA514D /* ViewController.m */,
 				06BD5D5B1C34BA8400BA514D /* Assets.xcassets */,
 				067F33F31C3A49ED003E0DF9 /* sun.png */,
 				06BD5D5D1C34BA8400BA514D /* LaunchScreen.storyboard */,
@@ -1373,6 +1416,7 @@
 		06BD5D681C34BBE200BA514D /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				06CE2BEA1C3B503B00B46A7A /* MBProgressHUD */,
 				067F33D61C3A43A8003E0DF9 /* AFNetworking */,
 				06502F141C34DCFE00819E34 /* XMPP */,
 			);
@@ -1382,10 +1426,10 @@
 		06BD5D691C34BBE200BA514D /* Login&Register */ = {
 			isa = PBXGroup;
 			children = (
+				06BD5D701C34BCFB00BA514D /* LoginAndRegister.storyboard */,
 				06BD5D6A1C34BBE200BA514D /* Controllers */,
 				06BD5D6B1C34BBE200BA514D /* Model */,
 				06BD5D6C1C34BBE200BA514D /* Views */,
-				06BD5D701C34BCFB00BA514D /* LoginAndRegister.storyboard */,
 			);
 			path = "Login&Register";
 			sourceTree = "<group>";
@@ -1397,6 +1441,10 @@
 				06BD5D731C34C66200BA514D /* AGLoginViewController.m */,
 				06EBC8BE1C3A0BC5009A31D8 /* AGRegisterViewController.h */,
 				06EBC8BF1C3A0BC5009A31D8 /* AGRegisterViewController.m */,
+				06CE2BFA1C3B5C8500B46A7A /* AGSinaLoginViewController.h */,
+				06CE2BFB1C3B5C8500B46A7A /* AGSinaLoginViewController.m */,
+				06CE2BFD1C3B67CB00B46A7A /* AGWechatLoginViewController.h */,
+				06CE2BFE1C3B67CB00B46A7A /* AGWechatLoginViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1419,6 +1467,8 @@
 			isa = PBXGroup;
 			children = (
 				06BD5D581C34BA8400BA514D /* Main.storyboard */,
+				06D9A0DE1C3CF37500624A70 /* Views */,
+				069826E51C3BBACE005DB27E /* Controllers */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -1438,10 +1488,34 @@
 				06502F0D1C34D2EA00819E34 /* Singleton.h */,
 				06502F0E1C34D3A000819E34 /* AGUserInfo.h */,
 				06502F0F1C34D3A000819E34 /* AGUserInfo.m */,
+				060817DB1C3CCDAE00CA34B0 /* AGSmallTools.h */,
+				060817DC1C3CCDAE00CA34B0 /* AGSmallTools.m */,
 				06502F111C34DC4200819E34 /* AGXMPPTool.h */,
 				06502F121C34DC4200819E34 /* AGXMPPTool.m */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		06CE2BEA1C3B503B00B46A7A /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				06CE2BF71C3B56FE00B46A7A /* MBProgressHUD.bundle */,
+				06CE2BF11C3B50A500B46A7A /* MBProgressHUD.h */,
+				06CE2BF21C3B50A500B46A7A /* MBProgressHUD.m */,
+				06CE2BF41C3B553800B46A7A /* MBProgressHUD+AG.h */,
+				06CE2BF51C3B553800B46A7A /* MBProgressHUD+AG.m */,
+			);
+			name = MBProgressHUD;
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		06D9A0DE1C3CF37500624A70 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				06D9A0DF1C3CF3CD00624A70 /* AGRosterCell.h */,
+				06D9A0E01C3CF3CD00624A70 /* AGRosterCell.m */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1503,6 +1577,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				06BD5D5F1C34BA8400BA514D /* LaunchScreen.storyboard in Resources */,
+				06CE2BF81C3B56FE00B46A7A /* MBProgressHUD.bundle in Resources */,
 				067F33F41C3A49ED003E0DF9 /* sun.png in Resources */,
 				065030E11C34DCFF00819E34 /* build-libidn.sh in Resources */,
 				06BD5D5C1C34BA8400BA514D /* Assets.xcassets in Resources */,
@@ -1519,6 +1594,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06D9A0E11C3CF3CD00624A70 /* AGRosterCell.m in Sources */,
 				065030C91C34DCFF00819E34 /* XMPPMessage+XEP_0224.m in Sources */,
 				065030A01C34DCFF00819E34 /* XMPPvCardTempBase.m in Sources */,
 				065030A11C34DCFF00819E34 /* XMPPvCardTempEmail.m in Sources */,
@@ -1532,6 +1608,7 @@
 				065030AC1C34DCFF00819E34 /* NSDate+XMPPDateTimeProfiles.m in Sources */,
 				065030831C34DCFF00819E34 /* XMPPSystemInputActivityMonitor.m in Sources */,
 				0650307F1C34DCFF00819E34 /* XMPPResourceMemoryStorageObject.m in Sources */,
+				06D9A1151C3D091400624A70 /* AGRosterTableViewController.m in Sources */,
 				065030681C34DCFF00819E34 /* XMPPXFacebookPlatformAuthentication.m in Sources */,
 				065030911C34DCFF00819E34 /* XMPPRoomOccupantHybridMemoryStorageObject.m in Sources */,
 				065030B41C34DCFF00819E34 /* XMPPCapsCoreDataStorageObject.m in Sources */,
@@ -1567,9 +1644,12 @@
 				065030661C34DCFF00819E34 /* XMPPDigestMD5Authentication.m in Sources */,
 				065030C21C34DCFF00819E34 /* XMPPAutoPing.m in Sources */,
 				065030B51C34DCFF00819E34 /* XMPPCapsResourceCoreDataStorageObject.m in Sources */,
+				06CE2BF31C3B50A500B46A7A /* MBProgressHUD.m in Sources */,
 				0650309B1C34DCFF00819E34 /* XMPPvCardCoreDataStorageObject.m in Sources */,
 				0650308E1C34DCFF00819E34 /* XMPPRoomHybrid.xcdatamodeld in Sources */,
 				065030AE1C34DCFF00819E34 /* XMPPMessage+XEP_0085.m in Sources */,
+				069826E81C3BBB1B005DB27E /* AGMyProfileViewController.m in Sources */,
+				06CE2BFF1C3B67CB00B46A7A /* AGWechatLoginViewController.m in Sources */,
 				0650307E1C34DCFF00819E34 /* XMPPUserCoreDataStorageObject.m in Sources */,
 				06BD5D541C34BA8400BA514D /* AppDelegate.m in Sources */,
 				065030D01C34DCFF00819E34 /* RFImageToDataTransformer.m in Sources */,
@@ -1635,6 +1715,7 @@
 				065030891C34DCFF00819E34 /* XMPPPrivacy.m in Sources */,
 				065030781C34DCFF00819E34 /* XMPPProcessOne.m in Sources */,
 				065030DD1C34DCFF00819E34 /* NSString+DDXML.m in Sources */,
+				06CE2BF61C3B553800B46A7A /* MBProgressHUD+AG.m in Sources */,
 				0650309F1C34DCFF00819E34 /* XMPPvCardTempAdrTypes.m in Sources */,
 				065030C11C34DCFF00819E34 /* XMPPBlocking.m in Sources */,
 				06502F101C34D3A000819E34 /* AGUserInfo.m in Sources */,
@@ -1645,6 +1726,7 @@
 				065030861C34DCFF00819E34 /* XMPPJabberRPCModule.m in Sources */,
 				065030DB1C34DCFF00819E34 /* DispatchQueueLogFormatter.m in Sources */,
 				0650309D1C34DCFF00819E34 /* XMPPvCardTemp.m in Sources */,
+				060817DA1C3CA63F00CA34B0 /* AGEditMyProfileViewController.m in Sources */,
 				065030981C34DCFF00819E34 /* XMPPvCard.xcdatamodeld in Sources */,
 				065030D91C34DCFF00819E34 /* DDTTYLogger.m in Sources */,
 				065030DE1C34DCFF00819E34 /* DDXMLDocument.m in Sources */,
@@ -1656,10 +1738,12 @@
 				065030D51C34DCFF00819E34 /* DDAbstractDatabaseLogger.m in Sources */,
 				06BD5D511C34BA8400BA514D /* main.m in Sources */,
 				065030731C34DCFF00819E34 /* XMPPPresence.m in Sources */,
+				060817DD1C3CCDAE00CA34B0 /* AGSmallTools.m in Sources */,
 				065030691C34DCFF00819E34 /* XMPPXOAuth2Google.m in Sources */,
 				065030701C34DCFF00819E34 /* XMPPMessage.m in Sources */,
 				065030CB1C34DCFF00819E34 /* XMPPMessage+XEP_0308.m in Sources */,
 				0650306F1C34DCFF00819E34 /* XMPPJID.m in Sources */,
+				06CE2BFC1C3B5C8500B46A7A /* AGSinaLoginViewController.m in Sources */,
 				065030871C34DCFF00819E34 /* XMPPIQ+LastActivity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1771,6 +1855,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = CoolRun/Info.plist;
@@ -1789,6 +1874,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = CoolRun/Info.plist;

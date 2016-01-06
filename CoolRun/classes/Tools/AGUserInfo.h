@@ -19,4 +19,7 @@ singleton_interface(AGUserInfo)
 @property (nonatomic,copy) NSString *userRegisterPasswd;
 /** 为了区分 登陆还是注册 */
 @property (nonatomic,assign,getter=isRegistType) BOOL registType;
+
+/**  */
+@property (strong,nonatomic) NSString *jidStr;
 @end

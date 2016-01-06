@@ -9,8 +9,9 @@
 #import "AGLoginViewController.h"
 #import "AGUserInfo.h"
 #import "AGXMPPTool.h"
+#import "MBProgressHUD+AG.h"
 
-@interface AGLoginViewController ()
+@interface AGLoginViewController ()<MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 
@@ -23,6 +24,10 @@
     AGUserInfo *userInfo = [AGUserInfo sharedAGUserInfo];
     userInfo.userName = self.nameTextField.text;
     userInfo.userPasswd = self.pwdTextField.text;
+    if ([userInfo.userName isEqualToString:@""] || [userInfo.userPasswd isEqualToString:@""]) {
+        [MBProgressHUD showError:@"用户名密码不能为空"];
+        return;
+    }
     /** 点击登录按钮 调用工具类的登录方法 */
     //下面这句是为了调用self方法 并且 防止内存泄露
     __weak typeof (self) vc = self;
@@ -47,6 +52,7 @@
                 //第二个参数，传nil就代表mainBundle
             [UIApplication sharedApplication].keyWindow.rootViewController = storyboard.instantiateInitialViewController;
             //跳转界面以后要销毁登录界面
+            MYLog(@"abcd!@#$ abcd!@#$");
         }
             break;
         case AGXMPPResultTypeLoginFaild:{
@@ -94,5 +100,6 @@
 - (void)dealloc{
     MYLog(@"%@ 销毁了",self);
 }
+
 
 @end

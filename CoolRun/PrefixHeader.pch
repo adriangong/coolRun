@@ -14,7 +14,9 @@
 #import <UIKit/UIKit.h>
 
 /** XMPP工具类中需要的相关宏 */
+//连接外部
 #define AGXMPPDOMAIN @"tarena.com"
+//后期连接外部服务器，这里的要改
 #define AGXMPPHOSTNAME @"127.0.0.1"
 #define AGXMPPPORT 5222
     #ifdef DEBUG
@@ -22,4 +24,5 @@
     #else
         #define MYLog(...)  //替换成空白
     #endif
+
 #endif /* PrefixHeader_pch */

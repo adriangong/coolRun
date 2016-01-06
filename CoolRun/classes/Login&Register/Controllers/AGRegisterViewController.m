@@ -11,20 +11,34 @@
 #import "AGXMPPTool.h"
 #import "AFNetworking.h"
 #import "NSString+md5.h"
+#import "MBProgressHUD+AG.h"
 
-@interface AGRegisterViewController ()
+@interface AGRegisterViewController ()<MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *userRegisterNameField;
 @property (weak, nonatomic) IBOutlet UITextField *userRegisterPwdField;
 
 @end
 
 @implementation AGRegisterViewController
+
+- (IBAction)clickBackBtn:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
 - (IBAction)clickRegister:(id)sender {
     MYLog(@"点击注册");
     [AGUserInfo sharedAGUserInfo].registType = YES;
     AGUserInfo *userInfo = [AGUserInfo sharedAGUserInfo];
-    userInfo.userRegisterName = self.userRegisterNameField.text;
-    userInfo.userRegisterPasswd = self.userRegisterPwdField.text;
+    NSString *rname = self.userRegisterNameField.text;
+    userInfo.userRegisterName = rname;
+    NSString *rpwd = self.userRegisterPwdField.text;
+    userInfo.userRegisterPasswd = rpwd;
+    
+    if ([rname isEqualToString:@""] || [rpwd isEqualToString:@""]) {
+        [MBProgressHUD showError:@"用户名和密码不能为空"];
+        return;
+    }
     /** 点击注册按钮 调用工具类的注册方法 */
     //下面这句是为了调用self方法 并且 防止内存泄露
     __weak typeof (self) vc = self;
@@ -33,7 +47,7 @@
         /** 处理注册的状态 */
         [vc handleRegistType:type];
     }];
-    [self dismissModalViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 /** 处理登录的返回状态 */
@@ -88,6 +102,7 @@
 
 /** 用来产生web账号的注册方法 */
 - (void)webRegister{
+    MYLog(@"webRegister");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSString *url = [NSString stringWithFormat:@"http://%@:8080/allRunServer/register.jsp",AGXMPPHOSTNAME];
     
