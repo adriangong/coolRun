@@ -66,25 +66,35 @@
     AGChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatMsgCell"];
     XMPPMessageArchiving_Message_CoreDataObject *msgObject = self.fetchControl.fetchedObjects[indexPath.row];
     
-    cell.msgLabel.text = msgObject.body;
-    NSDate *date = msgObject.timestamp;
-//    NSString *dateStr = [NSString ]
-//    cell.timeLable.text = ;
-    
-    //NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:self.friendJid];
-    NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:[XMPPJID jidWithString:[AGUserInfo sharedAGUserInfo].jidStr]];
-    if (data) {
-        cell.headImageView.image =
-        [UIImage imageWithData:data];
+    if ([msgObject isOutgoing]) {
+        cell.msgLabel.text = msgObject.body;
+        
+        //NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:self.friendJid];
+        NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:[XMPPJID jidWithString:[AGUserInfo sharedAGUserInfo].jidStr]];
+        if (data) {
+            cell.headImageView.image =
+            [UIImage imageWithData:data];
+        }else{
+            cell.headImageView.image =
+            [UIImage imageNamed:@"微信"];
+        }
+        cell.headImageView.image = [UIImage imageWithData:data];
+        
+        return cell;
     }else{
-        cell.headImageView.image =
-        [UIImage imageNamed:@"微信"];
+        NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:self.friendJid];
+        if (data) {
+            cell.headImageView.image =
+            [UIImage imageWithData:data];
+        }else{
+            cell.headImageView.image =
+            [UIImage imageNamed:@"微信"];
+        }
+        cell.headImageView.image = [UIImage imageWithData:data];
+        
+        return cell;
     }
-    cell.headImageView.image = [UIImage imageWithData:data];
     
-    
-    
-    return cell;
 }
 
 //这两行不管用，不知道为什么

@@ -85,7 +85,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    AGRosterCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cellf"];
+    AGRosterCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"friendCell"];
 //    XMPPUserCoreDataStorageObject *friend = self.friends[indexPath.row];
     XMPPUserCoreDataStorageObject *friend = self.fetchController.fetchedObjects[indexPath.row];
     NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:friend.jid];
