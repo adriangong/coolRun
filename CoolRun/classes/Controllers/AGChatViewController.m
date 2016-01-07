@@ -56,41 +56,52 @@
 - (void)initTableView{
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    //适应自动布局
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 80;
+    
+//    self.tableView.separatorColor = [UIColor clearColor];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    //
     return self.fetchControl.fetchedObjects.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    AGChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatMsgCell"];
+    
     XMPPMessageArchiving_Message_CoreDataObject *msgObject = self.fetchControl.fetchedObjects[indexPath.row];
     
     if ([msgObject isOutgoing]) {
+        AGChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatMsgCell"];
         cell.msgLabel.text = msgObject.body;
+        cell.nameLabel.text = @"me";
         
         //NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:self.friendJid];
         NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:[XMPPJID jidWithString:[AGUserInfo sharedAGUserInfo].jidStr]];
         if (data) {
-            cell.headImageView.image =
-            [UIImage imageWithData:data];
+            cell.headImageView.image = [UIImage imageWithData:data];
         }else{
-            cell.headImageView.image =
-            [UIImage imageNamed:@"微信"];
+            cell.headImageView.image = [UIImage imageNamed:@"微信"];
         }
         cell.headImageView.image = [UIImage imageWithData:data];
+        [AGSmallTools setRoundImage:cell.headImageView];
         
         return cell;
     }else{
+        AGChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatMsgCell2"];
+        cell.msgLabel.text = msgObject.body;
+        cell.nameLabel.text = msgObject.bareJidStr;
+        
         NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:self.friendJid];
         if (data) {
-            cell.headImageView.image =
-            [UIImage imageWithData:data];
+            cell.headImageView.image = [UIImage imageWithData:data];
         }else{
-            cell.headImageView.image =
-            [UIImage imageNamed:@"微信"];
+            cell.headImageView.image = [UIImage imageNamed:@"微信"];
         }
         cell.headImageView.image = [UIImage imageWithData:data];
+        [AGSmallTools setRoundImage:cell.headImageView];
         
         return cell;
     }
@@ -134,21 +145,28 @@
 /** 结果集发生变化 刷新 */
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller{
     [self.tableView reloadData];
+    [self msgDisplayLastRow];
+    
+    
+    //[self.tableView reloadData];
 }
 
+/** tableView显示最下面的信息 */
+- (void)msgDisplayLastRow{
+    NSInteger n = self.fetchControl.fetchedObjects.count;
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:n - 1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 
     [self initTableView];
     
-    //适应自动布局
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 80;
     
     [self loadMsg];
     
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
     // Do any additional setup after loading the view.
     
     
@@ -176,13 +194,14 @@
     //键盘节奏，先快后慢什么的
     UIViewAnimationOptions options = [notification.userInfo [UIKeyboardAnimationCurveUserInfoKey] intValue];
     //改变键盘约束
-    self.heightForBottom.constant = keyboardFrame.size.height + 44;
+    self.heightForBottom.constant = keyboardFrame.size.height;//这里可以添加自己的view
     //简单动画
     [UIImageView animateWithDuration:durations delay:0 options:options animations:^{
         [self.tableView layoutIfNeeded];
     } completion:^(BOOL finished) {
-        ;
+        [self msgDisplayLastRow];
     }];
+    
 }
 
 - (void)closeKeyboard:(NSNotification *)notification{
@@ -200,6 +219,12 @@
     }];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self.msgTextField resignFirstResponder];
+    MYLog(@"选了第%ld行",(long)indexPath.row);
+    MYLog(@"%@",self.fetchControl.fetchedObjects[indexPath.row]);
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

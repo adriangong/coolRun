@@ -16,4 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *msgImageView;
 
 
+
+
+
+
 @end
