@@ -11,6 +11,7 @@
 #import "AGUserInfo.h"
 #import "AGSmallTools.h"
 #import "AGRosterCell.h"
+#import "AGChatViewController.h"
 
 @interface AGRosterTableViewController ()<NSFetchedResultsControllerDelegate>
 @property (nonatomic,copy) NSArray *friends;
@@ -18,9 +19,7 @@
 @end
 
 @implementation AGRosterTableViewController
-- (IBAction)clickBackBtn:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -86,8 +85,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *identifer = @"friendCell";
-    AGRosterCell *cell = [self.tableView dequeueReusableCellWithIdentifier:identifer];
+    AGRosterCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"cellf"];
 //    XMPPUserCoreDataStorageObject *friend = self.friends[indexPath.row];
     XMPPUserCoreDataStorageObject *friend = self.fetchController.fetchedObjects[indexPath.row];
     NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:friend.jid];
@@ -115,6 +113,10 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 100;
+}
+
 //数据变化
 - (void) controllerDidChangeContent:(NSFetchedResultsController *)controller{
     [self.tableView reloadData];
@@ -129,5 +131,19 @@
     }
 }
 
+//跳转之前 设置参数
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    id desVC = segue.destinationViewController;
+    if ([desVC isKindOfClass: [AGChatViewController class]]) {
+        AGChatViewController *des = (AGChatViewController *)desVC;
+        des.friendJid = sender;
+    }
+}
 
+//选中某一行
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    XMPPUserCoreDataStorageObject *f = self.fetchController.fetchedObjects[indexPath.row];
+    [self performSegueWithIdentifier:@"chatSegue" sender:f.jid];
+    MYLog(@"%@",f.jid);
+}
 @end

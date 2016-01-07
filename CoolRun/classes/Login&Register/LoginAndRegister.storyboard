@@ -25,7 +25,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Ifl-hj-abc"/>
                                 </constraints>
-                                <state key="normal" title="登陆" backgroundImage="button">
+                                <state key="normal" title="登陆酷跑" backgroundImage="button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -258,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPP-LG-EMy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2604" y="455"/>
+            <point key="canvasLocation" x="2119" y="455"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NHR-9s-M6B">
@@ -390,7 +390,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1T-BN-oNW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1792" y="455"/>
+            <point key="canvasLocation" x="1446" y="455"/>
         </scene>
     </scenes>
     <resources>

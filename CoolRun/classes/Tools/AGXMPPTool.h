@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "Singleton.h"
 #import "XMPPFramework.h"
+#import "XMPPMessageArchiving.h"
+#import "XMPPMessageArchivingCoreDataStorage.h"
+
 
 /** 定义枚举 代表登录状态 */
 typedef enum{
@@ -43,6 +46,16 @@ singleton_interface(AGXMPPTool)
 /** 增加好友列表模块 和 对应的存储 */
 @property (nonatomic,strong)XMPPRoster *xmppRoster;
 @property (nonatomic,strong)XMPPRosterCoreDataStorage *xmppRosterStore;
+
+/** 增加消息模块和对应的存储 */
+@property (strong,nonatomic) XMPPMessageArchiving *xmppMsgArch;
+@property (strong,nonatomic) XMPPMessageArchivingCoreDataStorage *xmppMsgArchStore;
+
+
+
+
+
+
 
 /** 设置XMPP流 */
 - (void)setXmpp;

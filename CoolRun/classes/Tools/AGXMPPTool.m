@@ -39,8 +39,9 @@ singleton_implementation(AGXMPPTool)
     [self.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
     //开启底层发送数据的日志 xml文件
-    //[DDLog addLogger:[DDTTYLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
     
+    //
     /** 给 电子名片模块 和 头像模块 赋值 */
     self.xmppvCardCoreDataStorage = [XMPPvCardCoreDataStorage sharedInstance];
     self.xmppvCard = [[XMPPvCardTempModule alloc] initWithvCardStorage:self.xmppvCardCoreDataStorage];
@@ -50,12 +51,22 @@ singleton_implementation(AGXMPPTool)
     [self.xmppvCard activate:self.xmppStream];
     [self.xmppvCardAvarta activate:self.xmppStream];
     
+    //
     /** 给 好友列表模块对象 和 存储对象 赋值 */
     self.xmppRosterStore = [XMPPRosterCoreDataStorage sharedInstance];
     self.xmppRoster = [[XMPPRoster alloc] initWithRosterStorage:self.xmppRosterStore];
     
     /** 激活好友列表 */
     [self.xmppRoster activate:self.xmppStream];
+    
+    //
+    /** 给 消息模块 和 对应的存储 赋值 */
+    self.xmppMsgArchStore = [XMPPMessageArchivingCoreDataStorage sharedInstance];
+    self.xmppMsgArch = [[XMPPMessageArchiving alloc] initWithMessageArchivingStorage:self.xmppMsgArchStore];
+    
+    /** 激活消息 */
+    [self.xmppMsgArch activate:self.xmppStream];
+    
     
 }
 

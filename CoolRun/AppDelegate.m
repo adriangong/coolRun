@@ -17,7 +17,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setTheme];
     return YES;
+}
+
+- (void)setTheme{
+    UINavigationBar *bar = [UINavigationBar appearance];
+    [bar setBackgroundImage:[UIImage imageNamed:@"矩形"] forBarMetrics:UIBarMetricsDefault];
+    bar.barStyle = UIBarStyleBlack;
+    bar.tintColor = [UIColor whiteColor];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

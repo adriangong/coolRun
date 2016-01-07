@@ -93,8 +93,12 @@
     self.myProfile.photo = UIImagePNGRepresentation(image);
     //
     [[AGXMPPTool sharedAGXMPPTool].xmppvCard updateMyvCardTemp:self.myProfile];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
+}
+
+- (IBAction)clickBackBtn:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

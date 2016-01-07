@@ -12,12 +12,13 @@
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 #import <UIKit/UIKit.h>
+#import "Masonry.h"
 
 /** XMPP工具类中需要的相关宏 */
 //连接外部
 #define AGXMPPDOMAIN @"tarena.com"
 //后期连接外部服务器，这里的要改
-#define AGXMPPHOSTNAME @"127.0.0.1"
+#define AGXMPPHOSTNAME @"172.16.7.195"//172.16.7.202, 127.0.0.1
 #define AGXMPPPORT 5222
     #ifdef DEBUG
         #define MYLog(...) NSLog(__VA_ARGS__)
