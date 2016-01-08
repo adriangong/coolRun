@@ -12,14 +12,18 @@
 #import "AGSmallTools.h"
 #import "AGChatCell.h"
 
-@interface AGChatViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate>
+@interface AGChatViewController ()<UITableViewDelegate,UITableViewDataSource,NSFetchedResultsControllerDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UITextField *msgTextField;
+
 
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightForBottom;
 /** 结果控制器 */
 @property (strong,nonatomic) NSFetchedResultsController *fetchControl;
+
+@property (strong,nonatomic) UIImage *sendImage;
+
 @end
 
 @implementation AGChatViewController
@@ -75,7 +79,17 @@
     
     if ([msgObject isOutgoing]) {
         AGChatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"chatMsgCell"];
-        cell.msgLabel.text = msgObject.body;
+        
+        if ([msgObject.body hasPrefix:@"text:"]) {
+            cell.msgLabel.text = [msgObject.body substringFromIndex:5];
+            
+        }else if([msgObject.body hasPrefix:@"image:"]){
+            cell.msgLabel.text = @"";
+            NSString *base64Str = [msgObject.body substringFromIndex:6];
+            NSData *imageData = [[NSData alloc] initWithBase64EncodedString:base64Str options:0];
+            cell.msgImageView.image = [UIImage imageWithData:imageData];
+        }
+        
         cell.nameLabel.text = @"me";
         
         //NSData *data = [[AGXMPPTool sharedAGXMPPTool].xmppvCardAvarta photoDataForJID:self.friendJid];
@@ -122,7 +136,72 @@
 
 //
 - (IBAction)clickSendBtn:(id)sender {
-     [self sendMsg];
+     //弹出相册，保存一张图片
+    //相机和相册是一个控制器
+    UIImagePickerController *pc = [UIImagePickerController new];
+    pc.allowsEditing = YES;
+    pc.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    pc.delegate = self;
+    [self presentViewController:pc animated:YES completion:nil];
+}
+
+//选择图片
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    //可以选择发送原图，一般的PNG缩略图，和JPEG缩略图
+    
+    //拿原图
+    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    MYLog(@"image length = %ld", UIImagePNGRepresentation(image).length);
+    // 1228590
+    
+    /** 生成缩略图 */
+    //先写100，100，后面再处理细节，等比例缩放
+    UIImage *image2 = [self thumbnaiWithImage:image size:CGSizeMake(100, 100)];
+    MYLog(@"image2 length = %ld", UIImagePNGRepresentation(image2).length);
+    //28952
+    
+    //JPEG图片，第二个参数，1.0是最高的
+    NSData *data = UIImageJPEGRepresentation(image2, 0.05);
+    MYLog(@"image3 length = %ld", data.length);
+    
+    [self sendImage:data];
+    //self.sendImage;
+    //__weak typeof (self) vc = self;
+    [self dismissViewControllerAnimated:YES completion:^{
+        ;
+    }];
+    
+}
+/** 生成缩略图 */
+- (UIImage *)thumbnaiWithImage:(UIImage *)image size:(CGSize)size{
+    UIImage *img = nil;
+    if (image == nil) {
+        img = nil;
+    }else{
+        UIGraphicsBeginImageContext(size);
+        [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        img = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    
+    return img;
+}
+
+/** 发送图片 */
+- (void)sendImage:(NSData *)data{
+    //把图片变成文本,用base64编码
+    // 3个8位 -> 4个6位
+    NSString *base64Str = [data base64EncodedStringWithOptions:0];
+    //组装消息
+    XMPPMessage *msg = [XMPPMessage messageWithType:@"chat" to:self.friendJid];
+    //一个小协议，
+    NSString *dataStr = [NSString stringWithFormat:@"image:%@",base64Str];
+    
+    [msg addBody:dataStr];
+    
+    //发送消息
+    [[AGXMPPTool sharedAGXMPPTool].xmppStream sendElement:msg];
+    
 }
 
 //用回车发送消息
@@ -130,15 +209,20 @@
     [self sendMsg];
 }
 
+//发送消息
 - (void)sendMsg{
     NSString *msgText = self.msgTextField.text;
     //组装一条消息
     //第一个参数：chat room 等等
     XMPPMessage *msg = [XMPPMessage messageWithType:@"chat" to:self.friendJid];
-    [msg addBody:msgText];
+    //自定义简单的数据标准，为了区分 消息 是图片还是文字，各种在前面加个字的符号，"image:", "text:"
+    NSString *dataStr = [NSString stringWithFormat:@"text:%@",msgText];
+    [msg addBody:dataStr];
     
     //发送消息
     [[AGXMPPTool sharedAGXMPPTool].xmppStream sendElement:msg];
+    
+    //把输入清零
     self.msgTextField.text = @"";
 }
 
@@ -153,9 +237,12 @@
 
 /** tableView显示最下面的信息 */
 - (void)msgDisplayLastRow{
-    NSInteger n = self.fetchControl.fetchedObjects.count;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:n - 1 inSection:0];
-    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    NSInteger n = self.fetchControl.fetchedObjects.count - 1;
+    if (n < 0) {
+        return;
+    }
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:n inSection:0];
+    [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:NO];
 }
 
 - (void)viewDidLoad {
@@ -163,8 +250,9 @@
 
     [self initTableView];
     
-    
     [self loadMsg];
+    
+    [self msgDisplayLastRow];
     
 //    [self.tableView reloadData];
     // Do any additional setup after loading the view.
@@ -196,10 +284,12 @@
     //改变键盘约束
     self.heightForBottom.constant = keyboardFrame.size.height;//这里可以添加自己的view
     //简单动画
+    __weak typeof (self) vc = self;
     [UIImageView animateWithDuration:durations delay:0 options:options animations:^{
-        [self.tableView layoutIfNeeded];
+        [vc.tableView layoutIfNeeded];
+        [vc msgDisplayLastRow];
     } completion:^(BOOL finished) {
-        [self msgDisplayLastRow];
+        ;
     }];
     
 }
@@ -212,8 +302,9 @@
     //改变键盘约束
     self.heightForBottom.constant = 0;
     //简单动画
+    __weak typeof (self) vc = self;
     [UIImageView animateWithDuration:durations delay:0 options:options animations:^{
-        [self.tableView layoutIfNeeded];
+        [vc.tableView layoutIfNeeded];
     } completion:^(BOOL finished) {
         ;
     }];

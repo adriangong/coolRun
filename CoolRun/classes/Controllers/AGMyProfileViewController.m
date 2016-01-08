@@ -53,6 +53,24 @@
         editVC.myProfile = [AGXMPPTool sharedAGXMPPTool].xmppvCard.myvCardTemp;
     }
 }
+- (IBAction)clickSoprtRecordBtn:(id)sender {
+}
+
+- (IBAction)clickMyMessageBtn:(id)sender {
+}
+
+- (IBAction)clickPersonalSettingBtn:(id)sender {
+    NSLog(@"个人设置");
+}
+
+- (IBAction)clickLogoutBtn:(id)sender {
+    XMPPPresence *presence = [XMPPPresence presenceWithType:@"unavailable"];
+    
+    [[AGXMPPTool sharedAGXMPPTool].xmppStream sendElement:presence];
+    
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"LoginAndRegister" bundle:nil];
+    [UIApplication sharedApplication].keyWindow.rootViewController = storyBoard.instantiateInitialViewController;
+}
 
 
 

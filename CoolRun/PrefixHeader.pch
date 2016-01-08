@@ -14,12 +14,37 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 
+
 /** XMPP工具类中需要的相关宏 */
-//连接外部
-#define AGXMPPDOMAIN @"tarena.com"
-//后期连接外部服务器，这里的要改
-#define AGXMPPHOSTNAME @"172.16.7.195"//172.16.7.202, 127.0.0.1
-#define AGXMPPPORT 5222
+#define OUTWEB
+////连接外部
+#ifdef OUTWEB
+    #define AGXMPPDOMAIN @"tarena.com"
+    #define AGXMPPHOSTNAME @"124.207.192.18"
+    #define CONNECTURL @"http:124.207.192.18:8080/allRunServerNew/register.jsp"
+    #define AGXMPPPORT 5222
+#else
+    #define AGXMPPDOMAIN @"tarena.com"
+    #define AGXMPPHOSTNAME @"172.16.7.195"
+    #define CONNECTURL @"http://124.207.195.18:8080/allRunServer/register.jsp"
+    #define AGXMPPPORT 5222
+#endif
+
+//NSString *connectionURL = @"http:124.207.192.18:8080/allRunServerNew/register.jsp";
+//NSString *agxmppDOMAIM = @"tarena.com";
+//NSString *agxmppHOSTNAME = @"124.207.192.18";
+
+
+
+//@"172.16.7.195"  //172.16.7.202, 127.0.0.1
+
+/*  TARENAWEB
+ 
+ 124.207.192.18
+
+ http://124.207.192.18:8080/allRunServerNew/register.jsp
+
+*/
     #ifdef DEBUG
         #define MYLog(...) NSLog(__VA_ARGS__)
     #else

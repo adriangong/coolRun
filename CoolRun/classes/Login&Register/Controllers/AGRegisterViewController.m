@@ -104,7 +104,11 @@
 - (void)webRegister{
     MYLog(@"webRegister");
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    NSString *url = [NSString stringWithFormat:@"http://%@:8080/allRunServer/register.jsp",AGXMPPHOSTNAME];
+    NSString *url = CONNECTURL;
+    //[NSString stringWithFormat:@"http://%@:8080/allRunServerNew/register.jsp",AGXMPPHOSTNAME];
+    
+    // TARENAWEB
+    //http://%@:8080/allRunServerNew/register.jsp
     
     //准备参数
     NSMutableDictionary *parameters = [NSMutableDictionary dictionary];

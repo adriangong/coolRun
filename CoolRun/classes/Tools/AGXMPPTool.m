@@ -39,7 +39,7 @@ singleton_implementation(AGXMPPTool)
     [self.xmppStream addDelegate:self delegateQueue:dispatch_get_main_queue()];
     
     //开启底层发送数据的日志 xml文件
-    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    //[DDLog addLogger:[DDTTYLogger sharedInstance]];
     
     //
     /** 给 电子名片模块 和 头像模块 赋值 */

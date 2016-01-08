@@ -14,6 +14,8 @@
 @interface AGLoginViewController ()<MBProgressHUDDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
+@property (weak, nonatomic) IBOutlet UILabel *webIndicatorLabel;
+@property (weak, nonatomic) IBOutlet UISwitch *switchS;
 
 @end
 
@@ -101,5 +103,25 @@
     MYLog(@"%@ 销毁了",self);
 }
 
+- (IBAction)switchChangeValue:(id)sender {
+    if ([self.switchS isOn]) {
+        NSLog(@"1");
+        self.webIndicatorLabel.text = @"外网";
+        //外网服务器
+//        connectionURL =@"http:124.207.192.18:8080/allRunServerNew/register.jsp";
+//        agxmppDOMAIM = @"tarena.com";
+//        agxmppHOSTNAME =@"124.207.192.18";
+        
+    }else  {
+        self.webIndicatorLabel.text = @"内网";
+        NSLog(@"0");
+        //内网服务器
+//        connectionURL =@"http:172.16.7.195:8080/allRunServer/register.jsp";
+//        agxmppDOMAIM = @"tarena.com";
+//        agxmppHOSTNAME =@"172.16.7.195";
+        
+    }
+    [self.view layoutIfNeeded];
+}
 
 @end

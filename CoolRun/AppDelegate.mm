@@ -18,8 +18,29 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [self setTheme];
+    self.manager = [[BMKMapManager alloc] init];
+    [self.manager start:@"y0YEpzLts821wrk0ox6BnadH" generalDelegate:self];
+    
     return YES;
 }
+
+//
+- (void) onGetNetworkState:(int)iError{
+    if (0 == iError) {
+        MYLog(@"联网成功");
+    }else{
+        MYLog(@"onGetNetworkState %d",iError);
+    }
+}
+
+- (void) onGetPermissionState:(int)iError{
+    if (0 == iError) {
+        MYLog(@"授权成功");
+    }else{
+        MYLog(@"onGetPermissionState %d",iError);
+    }
+}
+
 
 - (void)setTheme{
     UINavigationBar *bar = [UINavigationBar appearance];

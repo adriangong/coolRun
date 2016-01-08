@@ -120,6 +120,18 @@
                                     <segue destination="eTr-6F-kGF" kind="show" id="c7K-Vc-pZL"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mfh-vF-REY">
+                                <rect key="frame" x="98" y="46" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchChangeValue:" destination="Wa7-Mh-Rg3" eventType="valueChanged" id="eap-0e-2rv"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="外网" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JQw-gA-zwb">
+                                <rect key="frame" x="35" y="50" width="38" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -130,12 +142,14 @@
                             <constraint firstAttribute="trailing" secondItem="DzI-dK-hCC" secondAttribute="trailing" constant="50" id="4qu-ry-2hI"/>
                             <constraint firstItem="9Q7-I3-oab" firstAttribute="top" secondItem="nQR-kt-f7J" secondAttribute="bottom" constant="20" id="5yl-zX-ajT"/>
                             <constraint firstItem="fp2-tf-3Cf" firstAttribute="top" secondItem="mGJ-TI-Nkn" secondAttribute="bottom" id="DHL-UM-B64"/>
+                            <constraint firstItem="Mfh-vF-REY" firstAttribute="centerY" secondItem="JQw-gA-zwb" secondAttribute="centerY" id="DUb-tk-hTF"/>
                             <constraint firstItem="9Q7-I3-oab" firstAttribute="trailing" secondItem="nQR-kt-f7J" secondAttribute="trailing" id="JOC-iL-ELS"/>
                             <constraint firstItem="nQR-kt-f7J" firstAttribute="top" secondItem="4qO-J9-TKO" secondAttribute="bottom" constant="30" id="Jj3-1d-nRE"/>
                             <constraint firstAttribute="trailing" secondItem="4qO-J9-TKO" secondAttribute="trailing" constant="30" id="Kp3-LT-jSS"/>
                             <constraint firstItem="i15-jd-r2C" firstAttribute="leading" secondItem="nQR-kt-f7J" secondAttribute="leading" id="LbL-Hw-wXA"/>
                             <constraint firstItem="fp2-tf-3Cf" firstAttribute="top" secondItem="3lo-4Y-1AG" secondAttribute="bottom" constant="80" id="Lc0-ac-KbZ"/>
                             <constraint firstItem="4qO-J9-TKO" firstAttribute="leading" secondItem="L0i-ks-Q3N" secondAttribute="leading" constant="30" id="NVH-28-gTo"/>
+                            <constraint firstItem="JQw-gA-zwb" firstAttribute="leading" secondItem="L0i-ks-Q3N" secondAttribute="leading" constant="35" id="OcM-MG-z5x"/>
                             <constraint firstItem="DzI-dK-hCC" firstAttribute="leading" secondItem="L0i-ks-Q3N" secondAttribute="leading" constant="50" id="QR4-Ht-eS2"/>
                             <constraint firstAttribute="trailing" secondItem="nQR-kt-f7J" secondAttribute="trailing" constant="30" id="Sxn-QJ-0Do"/>
                             <constraint firstItem="4qO-J9-TKO" firstAttribute="top" secondItem="L0i-ks-Q3N" secondAttribute="top" constant="110" id="Ugs-0S-0e9"/>
@@ -143,6 +157,8 @@
                             <constraint firstItem="3lo-4Y-1AG" firstAttribute="centerX" secondItem="L0i-ks-Q3N" secondAttribute="centerX" id="cwd-Nh-4Pf"/>
                             <constraint firstAttribute="trailing" secondItem="mGJ-TI-Nkn" secondAttribute="trailing" id="fiR-YN-O9c"/>
                             <constraint firstAttribute="trailing" secondItem="DV2-lW-Ibm" secondAttribute="trailing" constant="70" id="h4q-us-1J0"/>
+                            <constraint firstItem="Mfh-vF-REY" firstAttribute="leading" secondItem="JQw-gA-zwb" secondAttribute="trailing" constant="25" id="hsc-cg-KUm"/>
+                            <constraint firstItem="JQw-gA-zwb" firstAttribute="top" secondItem="myx-79-CQN" secondAttribute="bottom" constant="30" id="iVp-r7-NMt"/>
                             <constraint firstItem="3lo-4Y-1AG" firstAttribute="top" secondItem="DzI-dK-hCC" secondAttribute="bottom" constant="30" id="lvL-h0-BVc"/>
                             <constraint firstItem="fp2-tf-3Cf" firstAttribute="top" secondItem="DV2-lW-Ibm" secondAttribute="bottom" constant="80" id="mLX-3f-zZd"/>
                             <constraint firstItem="Dyp-gQ-UJJ" firstAttribute="leading" secondItem="L0i-ks-Q3N" secondAttribute="leading" constant="70" id="rSb-0X-0PD"/>
@@ -151,6 +167,8 @@
                     <connections>
                         <outlet property="nameTextField" destination="Ixy-hT-5aK" id="uqc-Lc-vij"/>
                         <outlet property="pwdTextField" destination="hCr-U3-efG" id="JJs-Ym-cdF"/>
+                        <outlet property="switchS" destination="Mfh-vF-REY" id="4it-NW-EkK"/>
+                        <outlet property="webIndicatorLabel" destination="JQw-gA-zwb" id="SGM-4Y-dbj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSc-sZ-Ahs" userLabel="First Responder" sceneMemberID="firstResponder"/>
